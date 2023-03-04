@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "name": "server",
+      "script": "build/index.js",
+      "instances": "max",
+      "exec_mode": "cluster",
+      "max_memory_restart": "500M",
+      "watch": true,
+      "env": {
+        "NODE_ENV": "staging"
+      }
+    }
+  ]
+}
