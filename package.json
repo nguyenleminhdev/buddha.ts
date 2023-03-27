@@ -10,7 +10,11 @@
     "build": "rimraf ./build && tsc",
     "start": "npm run build && node build"
   },
-  "author": "Andrew Nguyen",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nguyenleminhdev/buddha.ts.git"
+  },
+  "author": "Andrew Nguyen <nguyenleminhdev@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/async": "^3.2.16",
