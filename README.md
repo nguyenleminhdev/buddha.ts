@@ -1,3 +1,28 @@
+```
+///////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+卐                          _ooOoo_                            卐
+卐                         o8888888o                           卐
+卐                         88" . "88                           卐
+卐                         (| ^_^ |)                           卐
+卐                         O\  =  /O                           卐
+卐                      ____/`---'\____                        卐
+卐                    .'  \\|     |//  `.                      卐
+卐                   /  \\|||  :  |||//  \                     卐
+卐                  /  _||||| -:- |||||-  \                    卐
+卐                  |   | \\\  -  /// |   |                    卐
+卐                  | \_|  ''\---/''  |   |                    卐
+卐                  \  .-\__  `-`  ___/-. /                    卐
+卐                ___`. .'  /--.--\  `. . ___                  卐
+卐             ."" '<  `.___\_<|>_/___.'  >'"".                卐
+卐            | | :  `- \`.;`\ _ /`;.`/ - ` : | |              卐
+卐            \  \ `-.   \_ __\ /__ _/   .-` /  /              卐
+卐      ========`-.____`-.___\_____/___.-`____.-'========      卐
+卐                           `=---='                           卐
+卐      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      卐
+卐      No Crash ||  Buddha Blessing my Server  || No Bug      卐
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////
+```
+
 # Buddha.ts
 
 Buddha.ts is a backend framework that makes it easy to build custom, enterprise-grade Node.js apps. It is designed to resemble the MVC architecture from frameworks like Sails, but with support for the more modern, data-oriented style of API development. It's especially good for building realtime features like chat.
