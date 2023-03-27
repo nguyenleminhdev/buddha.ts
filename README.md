@@ -41,10 +41,9 @@ Buddha.ts actions are compatible with Connect middleware, so in most cases, you 
 ## Team
 Buddha.ts is actively maintained with the help of many amazing contributors. Our core team consists of:
 
-[![Andrew Nguyen](https://avatars2.githubusercontent.com/u/43477305)](https://www.facebook.com/andrew.nguyen.to.the.moon/) |
-:---:|
-[Andrew Nguyen](https://github.com/nguyenleminhdev)
-
+[![Andrew Nguyen](https://avatars2.githubusercontent.com/u/43477305)](https://www.facebook.com/andrew.nguyen.to.the.moon/) |  [![Buddha blessing](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Buddha_meditating.jpg/800px-Buddha_meditating.jpg)
+|:---:|:---:|
+[Andrew Nguyen](https://github.com/nguyenleminhdev) | [Buddha blessing](https://en.wikipedia.org/wiki/The_Buddha)
 
 ## License
 
