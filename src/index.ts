@@ -1,30 +1,11 @@
-/*******************************************************************************
- * 
- * index.ts
- *
- * Use `index.ts` to run your app in development.
- * To start the server, run: `npm run dev`.
- *
- * When use deploy to a server, use `pm2 start pm2/prod.json` instead.
- *
- * For example:
- *   => `npm run dev`               
- *   => `npm run staging`           
- *   => `npm run prod`              
- *   => `npm run build`             
- *   => `npm start`                 
- *   => `pm2 start pm2/staging.json`
- *   => `pm2 start pm2/prod.json`   
- * 
- ******************************************************************************/
-
 import express from 'express'
 import { waterfall } from 'async'
 
+import { CatchAllServerUnknownError } from './core/error'
 import { loadCurrentEnvConfig } from './core/env'
 import { loadCustomRequestResponse } from './core/req-res'
 import { loadBuddha } from './core/buddha'
-import { loadBootstrap } from './core/bootstrap'
+import { loadBootstrap, Bootstrap } from './core/bootstrap'
 import { loadConstant } from './core/constant'
 import { loadLanguage, Lang } from './core/language'
 import { loadMiddleware } from './core/middleware'
@@ -53,11 +34,13 @@ declare global {
         type: string
         name: string
         address: string
+        status?: string
     }>
     var $env: Env
     var $constant: Constant
     var $lang: Lang
     var $database: Database
+    var $bootstrap: Bootstrap
 }
 
 const APP = express()
@@ -67,6 +50,7 @@ globalThis.$logging = []
 console.clear()
 
 waterfall([
+    (cb: CbError) => CatchAllServerUnknownError(cb),
     (cb: CbError) => loadCurrentEnvConfig(cb),
     (cb: CbError) => loadConstant(cb),
     (cb: CbError) => loadLanguage(cb),

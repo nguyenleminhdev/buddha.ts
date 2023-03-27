@@ -3,6 +3,7 @@ import { json, urlencoded } from 'body-parser'
 import cors from 'cors'
 import morgan from 'morgan'
 import { Cb } from '../interface/function'
+import { green } from 'chalk'
 
 export const loadMiddleware = (APP: Express, proceed: Cb) => {
     APP.use(cors($env.cors))
@@ -15,7 +16,7 @@ export const loadMiddleware = (APP: Express, proceed: Cb) => {
         next()
     })
 
-    console.log(`✔ Cors, body-parser, morgan loading successfully`)
+    console.log(green`✔ Cors, body-parser, morgan loading successfully`)
 
     proceed()
 }

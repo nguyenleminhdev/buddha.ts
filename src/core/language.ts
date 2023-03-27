@@ -3,6 +3,7 @@ import { join } from 'path'
 import { Cb } from '../interface/function'
 import { Lang as Language } from '../interface/language'
 import { get, keys } from 'lodash'
+import { green, blue } from 'chalk'
 
 interface Source {
     [index: string]: Language
@@ -48,9 +49,9 @@ export async function loadLanguage(proceed: Cb) {
 
             globalThis.$lang = { source, t }
 
-            console.log(`✔ Language i18n loading successfully`)
+            console.log(green`✔ Language i18n loading successfully`)
 
-            keys(source).map(n => console.log(`\t⇨ ${n}`))
+            keys(source).map(n => console.log(blue`\t⇨ ${n}`))
 
             proceed()
         })

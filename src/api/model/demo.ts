@@ -2,18 +2,25 @@ import { Schema } from 'mongoose'
 
 const DemoSchema = new Schema(
     {
-        some_thing: {
+        field_one: {
             type: String,
-        },  
+            required: true,
+            unique: true,
+            sparse: true
+        },
+        auto_remove_at: {
+            type: Date,
+            required: true
+        },
     },
     { timestamps: true }
 )
 
-// DemoSchema.index({ some_thing: 1 })
-// DemoSchema.index({ auto_remove_at: 1 }, { expireAfterSeconds: 0 })
+DemoSchema.index({ field_one: 1 }, { unique: true, sparse: true })
+DemoSchema.index({ auto_remove_at: 1 }, { expireAfterSeconds: 0 })
 
 export const Demo = $database.mongodb.method.use(
-    'name_of_db',
+    'chatbox_2_main_data',
     'Demo',
     DemoSchema
 )

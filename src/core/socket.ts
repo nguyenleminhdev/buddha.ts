@@ -1,9 +1,10 @@
 import { Cb } from '../interface/function'
+import { red } from 'chalk'
 
 export const loadSocket = (proceed: Cb) => {
-    console.log(`❌ Socket is incomming feature`)
-    console.log(`\t⇨ socket.io`)
-    console.log(`\t⇨ websocket`)
+    console.log(red`❌ Socket is incomming feature`)
+    console.log(red`\t⇨ socket.io`)
+    console.log(red`\t⇨ websocket`)
 
     proceed()
 }

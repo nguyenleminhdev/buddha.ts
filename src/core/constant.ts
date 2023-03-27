@@ -1,6 +1,8 @@
 import { Cb } from '../interface/function'
 import { readdirSync } from 'fs'
 import { join } from 'path'
+import { Constant } from '../interface/constant'
+import { green } from 'chalk'
 
 export async function loadConstant(proceed: Cb) {
     const PATH = `${__dirname}/../config/constant`
@@ -15,9 +17,9 @@ export async function loadConstant(proceed: Cb) {
 
             r.map(n => { constant = { ...constant, ...n } })
 
-            globalThis.$constant = constant
+            globalThis.$constant = constant as Constant
 
-            console.log(`✔ Constant variable loading successfully`)
+            console.log(green`✔ Constant variable loading successfully`)
             proceed()
         })
 }

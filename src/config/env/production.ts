@@ -3,10 +3,10 @@ import { Env } from '../../interface/env'
 const ENV: Env = {
     app: {
         hello_message: 'SERVER loading successfully',
-        clear_log: false,
+        clear_log: true,
         host: '0.0.0.0',
         port: 1337,
-        log_level: 'dev',
+        log_level: 'none',
         prefix: 'v1',
         max_body_size: '1mb',
         public_path: 'public'

@@ -1,6 +1,6 @@
 {
   "name": "buddha.ts",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Express api server with full typescript support",
   "main": "build/index.js",
   "scripts": {
@@ -16,12 +16,13 @@
     "@types/async": "^3.2.16",
     "@types/body-parser": "^1.19.2",
     "@types/cors": "^2.8.13",
+    "@types/elasticsearch": "^5.0.40",
     "@types/express": "^4.17.15",
     "@types/lodash": "^4.14.191",
     "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.4",
     "@types/node": "^18.11.18",
-    "@types/request": "^2.48.8",
+    "@types/redis": "^2.8.32",
     "cross-env": "^7.0.3",
     "rimraf": "^3.0.2",
     "ts-node-dev": "^2.0.0",
@@ -30,11 +31,13 @@
   "dependencies": {
     "async": "^3.2.4",
     "body-parser": "^1.20.1",
+    "chalk": "^4.1.2",
     "cors": "^2.8.5",
+    "elasticsearch": "^16.7.3",
     "express": "^4.18.2",
     "lodash": "^4.17.21",
     "mongoose": "^6.8.3",
     "morgan": "^1.10.0",
-    "request": "^2.88.2"
+    "redis": "^3.1.2"
   }
 }

@@ -1,15 +1,12 @@
-/*******************************************************************************
- * 
- * Interface for api/
- * 
- ******************************************************************************/
-
 import { Request, Response, NextFunction } from 'express'
 
-// Api controller
+/**
+ * định nghĩa một api
+ */
 export type Controller = (req: Request, res: Response) => void
-
-// Api middleware
+/**
+ * định nghĩa một policy
+ */
 export type Middleware = (
     req: Request, 
     res: Response, 

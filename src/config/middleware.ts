@@ -1,8 +1,9 @@
-export interface MiddlewareConfig {
+interface MiddlewareConfig {
     [index: string]: string[]
 }
 
-export default ({
-    '/private/admin': ['checkAdmin'],
-    '/public': ['checkToken', 'checkAdmin']
-}) as MiddlewareConfig
+const CONFIG: MiddlewareConfig = {
+    '/': ['checkAuthorization'],
+}
+
+export default CONFIG

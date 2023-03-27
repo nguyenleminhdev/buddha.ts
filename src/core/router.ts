@@ -7,13 +7,20 @@ import { join } from 'path'
 import { keyBy, get, map } from 'lodash'
 import { Middleware } from '../interface/api'
 import middleware from '../config/middleware'
+import { green, blue } from 'chalk'
 
 interface PathData {
     full_path: string
     path: string
 }
+interface SourceItem {
+    [index: string]: Controller
+}
 interface SourceData extends PathData {
-    source: { [index: string]: Controller }
+    // source: { [index: string]: Controller }
+    // default: { [index: string]: Controller }
+    source: SourceItem
+    default: SourceItem
 }
 interface ControllerData {
     path: string
@@ -92,6 +99,56 @@ const loadMiddleware = (ROUTER: Router, proceed: Cb) => {
         }, cb)
     ], proceed)
 }
+
+const handleController = (path: string, source: SourceItem, proceed: Cb) => {
+    const DATA: {
+        controller_list: ControllerData[]
+    } = {
+        controller_list: []
+    }
+    eachOfLimit(
+        source,
+        1,
+        (controller, i, next) => {
+            DATA.controller_list.push({
+                path: join(path, controller.name.replace(/index/g, '')),
+                controller
+            })
+
+            next()
+        },
+        e => e ? proceed(e) : proceed(null, DATA.controller_list)
+    )
+}
+const handleControllerList = (input: SourceData, proceed: Cb) => {
+    const DATA: {
+        controller_list: ControllerData[]
+    } = {
+        controller_list: []
+    }
+    waterfall([
+        (cb: CbError) => handleController( // * export const
+            input.path,
+            input.source,
+            (e, r: ControllerData[]) => {
+                if (e) return cb(e)
+
+                DATA.controller_list = [...DATA.controller_list, ...r]
+                cb()
+            }
+        ),
+        (cb: CbError) => handleController( // * export default
+            input.path,
+            input.default,
+            (e, r: ControllerData[]) => {
+                if (e) return cb(e)
+
+                DATA.controller_list = [...DATA.controller_list, ...r]
+                cb()
+            }
+        ),
+    ], e => e ? proceed(e) : proceed(null, DATA.controller_list))
+}
 const loadController = (ROUTER: Router, proceed: Cb) => {
     const DATA: {
         path_list: PathData[]
@@ -113,22 +170,30 @@ const loadController = (ROUTER: Router, proceed: Cb) => {
             }
         ),
         (cb: CbError) => Promise.all(DATA.path_list.map(async r => {
-            return { ...r, ...{ source: await import(r.full_path) } }
+            const SOURCE = await import(r.full_path)
+            const DEFAULT = SOURCE.default || {}
+            delete SOURCE.default
+
+            return { ...r, ...{ source: SOURCE, default: DEFAULT } }
         })).then(r => {
             DATA.source_list = r
 
             cb()
         }),
-        (cb: CbError) => eachOfLimit(DATA.source_list, 1, (n, i, next) => {
-            eachOfLimit(n.source, 1, (controller, i, _next) => {
-                DATA.controller_list.push({
-                    path: join(n.path, controller.name.replace(/index/g, '')),
-                    controller
-                })
+        (cb: CbError) => eachOfLimit( // * handle list source
+            DATA.source_list,
+            1,
+            (source_data, i, next) => handleControllerList(
+                source_data,
+                (e, r: ControllerData[]) => {
+                    if (e) return next(e)
 
-                _next()
-            }, next)
-        }, cb),
+                    DATA.controller_list = [...DATA.controller_list, ...r]
+                    next()
+                }
+            ),
+            cb
+        ),
         (cb: CbError) => eachOfLimit(DATA.controller_list, 1, (n, i, next) => {
             ROUTER.all(n.path, n.controller)
 
@@ -161,13 +226,13 @@ export const loadRouter = (APP: Express, ROUTER: Router, proceed: Cb) => {
             cb()
         },
         (cb: CbError) => { // * log
-            console.log(`✔ Middleware loading successfully`)
+            console.log(green`✔ Middleware loading successfully`)
 
-            map(middleware, (v, k) => console.log(`\t⇨ ${k}: ${v}`))
+            map(middleware, (v, k) => console.log(blue`\t⇨ ${v.join(' >> ')} >> ${k}`))
 
-            console.log(`✔ Api loading successfully`)
+            console.log(green`✔ Api loading successfully`)
 
-            DATA.controller_list.map(n => console.log(`\t⇨ ${n.path}`))
+            DATA.controller_list.map(n => console.log(blue`\t⇨ ${n.path}`))
 
             cb()
         },

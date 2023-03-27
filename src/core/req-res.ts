@@ -2,6 +2,7 @@ import { readdirSync } from 'fs'
 import { join } from 'path'
 import express from 'express'
 import { Cb } from '../interface/function'
+import { green, blue } from 'chalk'
 
 enum ReqRes { request, response }
 type FunctionCustom = (
@@ -16,12 +17,12 @@ const customRequestResponse = ((type, path) => {
 
             express[type][module.default.name] = module.default
 
-            console.log(`\t⇨ ${type}: ${module.default.name}()`)
+            console.log(blue`\t⇨ ${type}: ${module.default.name}()`)
         })
 }) as FunctionCustom
 
 export const loadCustomRequestResponse = (proceed: Cb) => {
-    console.log(`✔ Custom request, response loading successfully`)
+    console.log(green`✔ Custom request, response loading successfully`)
 
     customRequestResponse(
         'request',

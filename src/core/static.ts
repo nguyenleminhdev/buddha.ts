@@ -11,13 +11,5 @@ export const loadStatic = (APP: Express, proceed: Cb) => {
         }
     ))
 
-    $logging.push({
-        type: 'server',
-        name: 'static',
-        address: `http://${$env.app.host}:${$env.app.port}/*`
-    })
-
-    console.log(`✔ Server static loading successfully`)
-
     proceed()
 }
