@@ -1,6 +1,4 @@
-import { MongodbConfig, RedisConfig, ElasticsearchConfig } from "../core/database"
-
-enum LogLevel { combined, common, dev, tiny, none }
+import { MongodbConfig, RedisConfig, ElasticsearchConfig } from 'buddha-core'
 
 export interface Env {
     app: {
@@ -23,7 +21,7 @@ export interface Env {
         /**
          * cài đặt các cấp bậc http log
          */
-        log_level: keyof typeof LogLevel
+        log_level: 'combined' | 'common' | 'dev' | 'tiny' | 'none'
         /**
          * cấu hình phần đầu của api
          * - vd: host:port/PREFIX/*
@@ -37,6 +35,7 @@ export interface Env {
          * server sẽ phục vụ file tĩnh ở thư mục này
          */
         public_path: string
+        time_zone: string
     }
     cors: {
         /**
@@ -58,5 +57,12 @@ export interface Env {
         elasticsearch: {
             [index: string]: ElasticsearchConfig
         }
+    }
+    jwt: {
+        /**
+         * mã bí mật để tạo | giải mã token
+         */
+        secret_key: string
+        expired: number
     }
 }

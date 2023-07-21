@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "server",
+      "name": "botads-server",
       "script": "build/index.js",
       "instances": "max",
       "exec_mode": "cluster",

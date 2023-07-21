@@ -26,7 +26,10 @@
 ################################################
 
 public/*
-!public/.gitkeep
+!public/.gitkeep 
+!public/.temp
+public/.temp/*
+!public/.temp/.gitkeep
 
 ################################################
 # Dependencies

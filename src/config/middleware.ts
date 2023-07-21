@@ -1,9 +1,7 @@
-interface MiddlewareConfig {
-    [index: string]: string[]
-}
+import type { MiddlewareConfig } from 'buddha-core'
 
 const CONFIG: MiddlewareConfig = {
-    '/': ['checkAuthorization'],
+    '/app': ['checkApp'],
 }
 
 export default CONFIG

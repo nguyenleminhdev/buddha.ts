@@ -1,3 +1,4 @@
+# Buddha.ts
 ```
 ///////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 卐                          _ooOoo_                            卐
@@ -23,53 +24,33 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////
 ```
 
-# Buddha.ts
+- Buddha.ts is an npm package that helps you easily build Node.js and TypeScript applications with a well-organized, modular, and efficient project structure. 
+- Designed with the flexibility and power of TypeScript, Buddha.ts makes development easier by reducing risks during the development and maintenance of your source code.
 
-Buddha.ts is a backend framework that makes it easy to build custom, enterprise-grade Node.js apps. It is designed to resemble the MVC architecture from frameworks like Sails, but with support for the more modern, data-oriented style of API development. It's especially good for building realtime features like chat.
+## Features
+- Easy-to-manage project structure: Buddha.ts provides an optimized project structure, allowing you to focus on building essential features of your application without worrying about code organization.
+- TypeScript support: Utilizing TypeScript for your source code provides superior benefits during development and maintenance, such as compile-time error detection and intelligent autocompletion.
+- Modular architecture: With a modular architecture, you can reuse code and minimize conflicts between different parts of your application.
+- Testing support: Buddha.ts integrates support for writing simple and effective tests, ensuring the stability and reliability of your application.
+- Integration of powerful features: Take advantage of powerful features like middleware, routing, validation, logging, and more to reduce development time and accelerate the deployment of your application.
 
-## Installation &nbsp;
-**With [node](http://nodejs.org) [installed](http://nodejs.org/en/download)(@^14):**
-```sh
-# Install require packages
-$ npm install
+## Installation
+To start using Buddha.ts in your project, install it via npm:
+
+```bash
+npm install buddha-core
 ```
 
-## Npm script
+## Usage
+For detailed usage instructions, you can refer to the Documentation (incomming).
 
-**Start app develop and hot reload:**
-```sh
-# start with development environment
-npm run dev
+## Contributions
+We always welcome contributions from the community to improve and enhance Buddha.ts. If you encounter any issues or have ideas for new features, feel free to open an issue or submit your pull request.
 
-# start with staging environment
-npm run staging
+## Author
+Buddha.ts is written and developed by Andrew Nguyen.
 
-# start with production environment
-npm run prod
-```
-
-**Deploy app with pm2 installed:**
-```sh
-# at local device
-npm run build
-
-# at server
-pm2 start pm2/<something>
-```
-
-## Compatibility
-
-Buddha.ts is built on [Node.js](http://nodejs.org/), [Express](http://expressjs.com/), and [Mongooese](http://mongooese.com/).
-
-Buddha.ts actions are compatible with Connect middleware, so in most cases, you can paste code into Buddha.ts from an existing Express project and everything will work-- plus you'll be able to use WebSockets to talk to your API, and vice versa.
-
-## Team
-Buddha.ts is actively maintained with the help of many amazing contributors. Our core team consists of:
-
-[![Andrew Nguyen](https://avatars2.githubusercontent.com/u/43477305)](https://www.facebook.com/andrew.nguyen.to.the.moon/) |  [![Buddha blessing](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Buddha_meditating.jpg/800px-Buddha_meditating.jpg)
-|:---:|:---:|
-[Andrew Nguyen](https://github.com/nguyenleminhdev) | [Buddha blessing](https://en.wikipedia.org/wiki/The_Buddha)
+Email: nguyenleminhdev@gmail.com
 
 ## License
-
-[MIT License](https://opensource.org/licenses/MIT)  Copyright © 2023-present, Andrew Nguyen
+Buddha.ts is licensed under the MIT License.
