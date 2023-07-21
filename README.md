@@ -38,7 +38,11 @@
 To start using Buddha.ts in your project, install it via npm:
 
 ```bash
-npm install buddha-core
+git clone https://github.com/nguyenleminhdev/buddha.ts.git
+
+npm install
+
+npm run dev
 ```
 
 ## Usage
