@@ -3,4 +3,4 @@ import './global'
 import { init } from 'buddha-core'
 
 // khởi động hệ thống
-init()
+init(__dirname)
