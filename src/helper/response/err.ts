@@ -1,16 +1,28 @@
 import { Response } from 'express'
 
+/**kiểu dữ liệu của phương thức */
+type err = (
+    this: Response, 
+    /**thông điệp lỗi */
+    message?: any, 
+    /**http code, mặc định là 403 */
+    code?: number, 
+    /**dữ liệu lỗi thêm */
+    payload?: any
+) => void
+
+// thêm type vào thư viện express
 declare global {
     namespace Express {
         interface Response {
-            err: (message?: any, code?: number, payload?: any) => void
+            /**sử dụng để trả về khi xảy ra lỗi */
+            err: err
         }
     }
 }
 
-type Err = (this: Response, message: any, code: number, payload: any) => void
-
-const err = (function (this, message, code = 403, payload) {
+// logic của phương thức
+export default (function (this, message, code = 403, payload) {
     this
         .status(code)
         .json({
@@ -19,6 +31,4 @@ const err = (function (this, message, code = 403, payload) {
             mean: $lang.t(message, this.req.locale),
             payload
         })
-}) as Err
-
-export default err
+}) as err

@@ -1,17 +1,25 @@
 import { Response } from 'express'
 
+/**kiểu dữ liệu của phương thức */
+type ok = (
+    this: Response, 
+    /**dữ liệu trả về */
+    data?: any, 
+    /**http code mặc định 200 */
+    code?: number
+) => void
+
+// thêm type vào thư viện express
 declare global {
     namespace Express {
         interface Response {
-            ok: (data?: any, code?: number) => void
+            /**sử dụng để trả về kết quả khi thành công */
+            ok: ok
         }
     }
 }
 
-type Ok = (this: Response, data: any, code: number) => void
-
-const ok = (function (this, data, code = 200) {
+// logic của phương thức
+export default (function (this, data, code = 200) {
     this.status(code).json({ code, data })
-}) as Ok
-
-export default ok
+}) as ok

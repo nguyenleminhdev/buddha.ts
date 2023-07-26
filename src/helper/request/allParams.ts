@@ -1,32 +1,19 @@
 import { Request } from 'express'
 
+/**kiểu dữ liệu của phương thức */
+type allParams = (this: Request) => any
+
+// thêm type vào thư viện express
 declare global {
     namespace Express {
         interface Request {
-            allParams: () => object
+            /**gộp các dữ liệu của query, body và params vào một */
+            allParams: allParams,
         }
     }
 }
 
-const allParams = function (this: Request) {
-    return {
-        /**
-         * querystring data in url:
-         * ?param_1=something&param_2=someone
-         */
-        ...this.query,
-
-        /**
-         * data json parser of list content-type: 
-         * application json | application/x-www-form-urlencoded | form data
-         */
-        ...this.body,
-
-        /**
-         * string data in url: /something/:variable_1/:variable_2
-         */
-        ...this.params
-    }
-}
-
-export default allParams
+// logic của phương thức
+export default (function (this) {
+    return { ...this.query, ...this.body, ...this.params }
+}) as allParams
