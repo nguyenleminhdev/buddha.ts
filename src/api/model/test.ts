@@ -16,7 +16,7 @@ const TestSchema = new Schema(
 
 TestSchema.index({ test_id: 1 }, { unique: true, sparse: true, })
 
-export const UserFacebookAccount = create_model_mongodb(
+export const Test = create_model_mongodb(
     'db_1',
     'Test',
     TestSchema
