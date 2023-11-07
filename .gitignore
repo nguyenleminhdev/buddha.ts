@@ -24,7 +24,7 @@
 # to fit your needs!
 #
 ################################################
-
+build/*
 public/*
 !public/.gitkeep 
 !public/.temp
