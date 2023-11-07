@@ -8,7 +8,7 @@
     "staging": "cross-env NODE_ENV=staging ts-node-dev src/index.ts",
     "prod": "cross-env NODE_ENV=production ts-node-dev src/index.ts",
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build"
+    "start": "pnpm run build && node build"
   },
   "author": "Andrew Nguyen",
   "license": "ISC",
